@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//app/auth/forms.py=utf-8
+encoding//app/auth/views.py=utf-8
+encoding//app/config.py=utf-8
+encoding//app/main/controllers.py=utf-8
+encoding//app/main/views.py=utf-8
+encoding//app/manage.py=utf-8
+encoding//app/models.py=utf-8
+encoding//app/task/addRequests.py=utf-8
+encoding//app/task/dbOperate.py=utf-8
+encoding//app/task/models.py=utf-8
+encoding//app/task/taskManage.py=utf-8

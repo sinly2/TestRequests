@@ -1,0 +1,75 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}微商需求管理系统{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle"
+data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="/index">欢迎您，{{basic["user_name"]}}</a>
+</div>
+<div class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li><a href="/getMyReq">我的需求</a></li>
+<li><a href="/getAllReq">需求列表</a></li>
+<li><a href="/datalist">数据统计</a></li>
+</ul>
+<ul class="nav pull-right">
+{% if current_user.is_authenticated %}
+<li><a href="/auth/logout" >退出</a></li>
+{% else %}
+<li><a href="/auth/login" >登陆</a></li>
+{% endif %}
+</ul>
+</div>
+</div>	
+</div>
+{% endblock %}
+{% block content %}
+<div class="col-sm-8 col-sm-offset-4">
+<h2 >上周上线需求{{ basic["count_upline"] }}个,在测需求{{ basic["count_testing"] }}个</h2>
+</div>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>需求名称</th>
+<th>提测人</th> 
+<th>提测日期</th>
+<th>测试人</th>
+<th>开测日期</th>
+<th>预计上线日期</th>
+<th>实际上线日期</th>
+<th>需求状态</th>
+<th>项目组</th>
+</tr>
+</thead>
+<tbody>
+{% for item in result %}
+<tr>
+<td>{{item['name']}}</td>
+<td>{{item['raise_man']}}</td>
+<td>{{item['raise_date']}}</td>
+<td>{{item['test_man']}}</td>
+<td>{{item['start_date']}}</td>
+<td></td>
+<td>{{item['upline_date']}}</td>
+{% if item['status'] == 1 %}
+<td>已提测</td>
+{% elif item['status'] == 2 %}
+<td>测试中</td>
+{% else %}
+<td>已上线</td>
+{% endif %}
+<td>微商</td>
+</tr>
+{% endfor %}
+{% endblock %}
+{% block scripts %}
+<script src="../static/jquery.js"></script>
+<script>
+{% endblock %}}
